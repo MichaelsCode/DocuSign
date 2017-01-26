@@ -1,0 +1,153 @@
+<apex:page showHeader="false" controller="DocuSignDynamicGenerationController" renderas="pdf" docType="html-5.0" applyHtmlTag="false" >
+    <head>
+        <style type="text/CSS" media="print">
+            @page {
+            size: 12.5in 10in;
+            margin: 8%;
+            }
+            @
+            bottom-right {
+            content: "Page " counter(page) "of " counter(pages);
+            }
+            @
+            bottom-left {
+            content: "Service Report";
+            }
+            }
+            div.headerlogo {
+            position: running(header);
+            }
+            .table-bordered {
+            border-collapse: collapse;
+            border-spacing: 0;
+            font-size: 8px;
+            border: 0px solid #000000;
+            border-collapse: collapse;
+            text-align: center;
+            
+            }
+            
+            thead>tr>th {
+            vertical-align: middle;
+            border: 0.1px solid #FBFBEF;
+            border-spacing: 0;
+            text-align: center;
+             font-size: 16px;
+            border-style: solid ;
+            overflow: hidden;
+            word-break: normal;
+            background-color: #CEECF5;
+            border-collapse: collapse;
+            background: #CEECF5;
+            
+            }
+            
+            td {
+             font-size: 14px;
+            border-style: solid;
+            overflow: hidden;
+            word-break: normal;
+            border-color: #FBFBEF;
+            color: #000000;
+            vertical-align: middle;
+            border: 0.1px solid #FBFBEF;
+            border-spacing: 0;
+            border-collapse: collapse;
+            text-align: center;
+            }
+            
+            
+            
+        </style>
+        
+        
+        <style type="text/css" media="print">
+            @page {
+            @top-center {
+            content: element(header);
+            }
+            @bottom-left {
+            content: element(footer);
+            }
+            }
+            
+            div.header {
+            padding: 10px;
+            position: running(header);
+            }
+            div.footer {
+            display: block;
+            padding: 5px;
+            position: running(footer);
+            }
+            
+            .pagenumber:before {
+            content: counter(page);
+            }
+            .pagecount:before {
+            content: counter(pages);
+            }
+        </style>
+        
+        
+        
+        
+    </head>
+    
+    
+    <body>
+        
+        
+        <div align="center">
+            <apex:image value="https://cs11.salesforce.com/img/seasonLogos/Spring_17_175x65.png" style="align:middle"/>
+        </div>
+        <div align="center">
+            <p>Salesforce DocuSign Contract  Terms and Conditions .</p>
+            
+        </div>
+        <div class="footer">
+            <div>Page <span class="pagenumber"/> of <span class="pagecount"/></div>
+        </div>
+        <p align="center">--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+        
+        <table width="100%" class="table-bordered">
+            <thead>
+                <tr>
+                    <th class="left-align">ContractNumber</th>
+                    <th class="left-align">Name</th>
+                    <th class="left-align">StartDate</th>
+                    <th class="left-align">End Date  </th>
+                    <th class="left-align">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <apex:repeat value="{!contaract}" var="con" >
+                    <tr>
+                        <td class="left-align" >{!con.ContractNumber}</td>
+                        <td class="left-align" >{!con.Name}</td>
+                        <td class="left-align" >{!con.StartDate}</td>
+                        <td class="left-align" >{!con.EndDate}</td>
+                        <td class="left-align" >{!con.Status}</td>
+                        
+                        
+                    </tr>
+                </apex:repeat> 
+                
+            </tbody>
+        </table>
+        <br/>
+        <br/>
+        <br/>
+        <div align="left">
+            <p>By Completeing DocuSign, You are agreed  terms and Conditions . </p>
+            <p>Customer Name: (Please print) <span style=" color: #FFFFFF"  id="cstnamtag">cstnamtag</span></P>
+        <p>Signed: <span  style=" color: #FFFFFF" id="Signaturetag">Signaturetag</span></p>
+        <p>Date:<span  style=" color: #FFFFFF"  id="signdatetag"> signdatetag</span></p>
+      </div>
+    
+    
+    
+    
+</body>
+
+</apex:page>

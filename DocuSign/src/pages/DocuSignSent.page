@@ -1,0 +1,6 @@
+<apex:page controller="DocuSignSentCntr">
+    <apex:form >
+        <apex:commandButton action="{!sendDoc}" value="Send DocuSign"/>
+    </apex:form>
+    
+</apex:page>
